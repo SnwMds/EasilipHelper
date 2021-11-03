@@ -26,6 +26,12 @@ public class MainActivity extends AppCompatActivity {
 			requestPermissions(new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
 		}
 		
+		final File directory = new File("/sdcard/EasilipHelper/");
+		
+		if (!directory.exists()) {
+			directory.mkdirs();
+		}
+		
 		final Intent intent = getIntent();
 		final String action = intent.getStringExtra("action");
 		
