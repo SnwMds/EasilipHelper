@@ -4,6 +4,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.content.pm.PackageInfo;
 import android.os.Build;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -12,6 +13,9 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.Parcelable;
 import android.os.Process;
+
+import org.json.JSONObject;
+import org.json.JSONArray;
 
 public class EasilipService extends Service {
 	

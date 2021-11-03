@@ -1,10 +1,13 @@
 package com.amanoteam.easiliphelper;
 
+import java.io.File;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.widget.Toast;
+import android.os.Environment;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -37,8 +40,12 @@ public class MainActivity extends AppCompatActivity {
 		
 		if (grantResults.length == 0 || grantResults.get(0) != PackageManager.PERMISSION_GRANTED) {
 			Toast.makeText(getApplicationContext(), "Storage permission is required for this extension to work properly!", Toast.LENGTH_SHORT).show();
+			return;
 		}
 		
-	}
-
+		final File directory = new File(Environment.getExternalStorageDirectory() + "/EasilipHelper/");
+		
+		if (!directory.exists()) {
+			directory.mkdirs();
+		}
 }
