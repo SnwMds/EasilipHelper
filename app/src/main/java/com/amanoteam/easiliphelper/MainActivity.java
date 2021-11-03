@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 	
 	@Override
 	public void onRequestPermissionsResult(final int requestCode, final String[] permissions, final int[] grantResults) {
-		Log.v("vvv", grantResults);
+		Log.v("vvv", grantResults.toString());
 		if (grantResults.length == 0 || Arrays.asList(grantResults).indexOf(0) != PackageManager.PERMISSION_GRANTED) {
 			Toast.makeText(getApplicationContext(), "Storage permission is required for this extension to work properly!", Toast.LENGTH_SHORT).show();
 			return;
