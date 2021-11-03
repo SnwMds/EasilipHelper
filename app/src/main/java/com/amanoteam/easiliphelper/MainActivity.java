@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 	
 	@Override
 	public void onRequestPermissionsResult(final int requestCode, final String[] permissions, final int[] grantResults) {
-		super.onRequestPermissionsResult();
+		super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 		
 		Log.v("vvv", grantResults.toString());
 		if (grantResults.length == 0 || Arrays.asList(grantResults).indexOf(0) != PackageManager.PERMISSION_GRANTED) {
