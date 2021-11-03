@@ -3,6 +3,8 @@ package com.amanoteam.easiliphelper;
 import java.io.File;
 import java.util.Arrays;
 
+import android.util.Log;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.Manifest;
@@ -43,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 	
 	@Override
 	public void onRequestPermissionsResult(final int requestCode, final String[] permissions, final int[] grantResults) {
-		
+		Log.v("vvv", grantResults);
 		if (grantResults.length == 0 || Arrays.asList(grantResults).indexOf(0) != PackageManager.PERMISSION_GRANTED) {
 			Toast.makeText(getApplicationContext(), "Storage permission is required for this extension to work properly!", Toast.LENGTH_SHORT).show();
 			return;
