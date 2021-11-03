@@ -1,6 +1,7 @@
 package com.amanoteam.easiliphelper;
 
 import java.io.File;
+import java.uril.Arrays;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 		
 		Intent newIntent;
 		
-		if (action.equals("fetch_installed_extensions")) {
+		if (action.equals("get_packages")) {
 			newIntent = new Intent(this, GetPackagesService.class);
 		}
 		
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 	@Override
 	public void onRequestPermissionsResult(final int requestCode, final String[] permissions, final int[] grantResults) {
 		
-		if (grantResults.length == 0 || grantResults.get(0) != PackageManager.PERMISSION_GRANTED) {
+		if (grantResults.length == 0 || Arrays.asList(grantResults).indexOf(0) != PackageManager.PERMISSION_GRANTED) {
 			Toast.makeText(getApplicationContext(), "Storage permission is required for this extension to work properly!", Toast.LENGTH_SHORT).show();
 			return;
 		}
