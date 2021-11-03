@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.widget.Toast;
-import android.os.Environment;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;

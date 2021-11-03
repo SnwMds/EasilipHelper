@@ -3,7 +3,7 @@ package com.amanoteam.easiliphelper;
 import java.io.IOException;
 import java.util.List;
 
-
+import android.widget.Toast;
 import android.content.ContentResolver;
 import android.app.Service;
 import android.content.Intent;
@@ -75,7 +75,7 @@ public class GetPackagesService extends Service {
 						}
 						
 						final ContentResolver contentResolver =  getContentResolver();
-						final Uri fileUri = Url.parse("/sdcard/EasilipHelper/installed_packages.json");
+						final Uri fileUri = Uri.parse("/sdcard/EasilipHelper/installed_packages.json");
 						
 						final OutputStream outputStream = contentResolver.openOutputStream(fileUri);
 						outputStream.write(jsonArray.toString().getBytes());
