@@ -1,5 +1,6 @@
 package com.amanoteam.easiliphelper;
 
+import android.content.ContentResolver;
 import android.app.Service;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -9,10 +10,12 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.IBinder;
+import android.net.Uri;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Parcelable;
 import android.os.Process;
+import java.io.OutputStream;
 
 import org.json.JSONObject;
 import org.json.JSONArray;
@@ -35,7 +38,7 @@ public class EasilipService extends Service {
 					final Intent intent = (Intent) msg.obj;
 					final String action = intent.getStringExtra("action");
 					
-					if action.equals("fetch_installed_extensions") {
+					if (action.equals("fetch_installed_extensions")) {
 						final List<ApplicationInfo> packages = packageManager.getInstalledApplications(PackageManager.GET_META_DATA);
 						
 						String packageLabel;
@@ -58,7 +61,7 @@ public class EasilipService extends Service {
 							versionCode = packageInfo.versionCode;
 							versionName = packageInfo.versionName;
 							
-							jsonObject = new JSONObject():
+							jsonObject = new JSONObject();
 							
 							jsonObject.put("packageLabel", packageLabel);
 							jsonObject.put("packageName", packageName);
@@ -67,6 +70,13 @@ public class EasilipService extends Service {
 							
 							jsonArray.put(jsonObject);
 						}
+						
+						final ContentResolver contentResolver =  getContentResolver();
+						final Uri fileUri = Url.parse(Environment.getExternalStorageDirectory() + "/EasilipHelper/installed_packages.json");
+						
+						final OutputStream outputStream = contentResolver.openOutputStream(fileUri);
+						outputStream.write(jsonArray.toString().getBytes());
+						outputStream.close();
 						
 					}
 					
