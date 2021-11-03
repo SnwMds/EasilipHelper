@@ -11,12 +11,12 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.app.Activity;
 import androidx.core.content.ContextCompat;
 
 import com.amanoteam.easiliphelper.GetPackagesService;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 	
 	@Override
 	protected void onCreate(final Bundle savedInstanceState) {
