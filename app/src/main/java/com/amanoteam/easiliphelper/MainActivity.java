@@ -33,7 +33,7 @@ public class MainActivity extends Activity {
 		}
 		
 		final Intent intent = getIntent();
-		final String action = intent.getStringExtra("action");
+		//final String action = intent.getStringExtra("action");
 		
 		final Intent newIntent = new Intent(this, GetPackagesService.class);
 		
