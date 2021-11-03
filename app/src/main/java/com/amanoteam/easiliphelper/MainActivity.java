@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 		
 		Intent newIntent = null;
 		
-		if (action.equals("get_packages")) {
+		if ("get_packages".equals("get_packages")) {
 			newIntent = new Intent(this, GetPackagesService.class);
 		}
 		
