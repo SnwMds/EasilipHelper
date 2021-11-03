@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 		final Intent intent = getIntent();
 		final String action = intent.getStringExtra("action");
 		
-		Intent newIntent;
+		Intent newIntent = null;
 		
 		if (action.equals("get_packages")) {
 			newIntent = new Intent(this, GetPackagesService.class);
