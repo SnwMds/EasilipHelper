@@ -42,7 +42,7 @@ public class GetPackagesService extends Service {
 			}
 			@Override
 			public void handleMessage(final Message msg) {
-					
+					Toast.makeText(getApplicationContext(), "Error getting kkkkk list!", Toast.LENGTH_SHORT).show();
 					final List<ApplicationInfo> packages = packageManager.getInstalledApplications(PackageManager.GET_META_DATA);
 					
 					String packageLabel;
