@@ -1,6 +1,8 @@
 package com.amanoteam.easiliphelper;
 
 import java.io.IOException;
+import java.util.List;
+
 
 import android.content.ContentResolver;
 import android.app.Service;
@@ -54,7 +56,7 @@ public class GetPackagesService extends Service {
 					
 					try {
 						for (ApplicationInfo applicationInfo : packages) {
-							packageLabel = packageManager.getApplicationLabel(applicationInfo);
+							packageLabel = packageManager.getApplicationLabel(applicationInfo).toString();
 							packageName = applicationInfo.packageName;
 							
 							packageInfo = packageManager.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES);

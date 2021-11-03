@@ -1,7 +1,6 @@
 package com.amanoteam.easiliphelper;
 
 import java.io.File;
-import java.util.List;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +12,7 @@ import android.os.Environment;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-import com.amanoteam.easiliphelper.EasilipService;
+import com.amanoteam.easiliphelper.GetPackagesService;
 
 public class MainActivity extends AppCompatActivity {
 	
