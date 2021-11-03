@@ -41,22 +41,4 @@ public class MainActivity extends Activity {
 		
 		finish();
 	}
-	
-	@Override
-	public void onRequestPermissionsResult(final int requestCode, final String[] permissions, final int[] grantResults) {
-		super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-		
-		Log.v("vvv", grantResults.toString());
-		if (grantResults.length == 0 || Arrays.asList(grantResults).indexOf(0) != PackageManager.PERMISSION_GRANTED) {
-			Toast.makeText(getApplicationContext(), "Storage permission is required for this extension to work properly!", Toast.LENGTH_SHORT).show();
-			return;
-		}
-		
-		final File directory = new File("/sdcard/EasilipHelper/");
-		
-		if (!directory.exists()) {
-			directory.mkdirs();
-		}
-	
-	}
 }
