@@ -8,6 +8,7 @@ import android.content.ContentResolver;
 import android.app.Service;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.ApplicationInfo;
@@ -80,7 +81,7 @@ public class GetPackagesService extends Service {
 						final OutputStream outputStream = contentResolver.openOutputStream(fileUri);
 						outputStream.write(jsonArray.toString().getBytes());
 						outputStream.close();
-					} catch (IOException | JSONException e) {
+					} catch (IOException | JSONException | NameNotFoundException e) {
 						Toast.makeText(getApplicationContext(), "Error getting packages list!", Toast.LENGTH_SHORT).show();
 					}
 					
