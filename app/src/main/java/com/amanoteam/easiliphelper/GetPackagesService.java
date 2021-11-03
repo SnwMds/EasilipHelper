@@ -108,7 +108,7 @@ public class GetPackagesService extends Service {
 			message.arg1 = startId;
 			message.obj = (Object) intent;
 			
-			serviceHandler.sendMessage(msg);
+			serviceHandler.sendMessage(message);
 			
 			return START_NOT_STICKY;
 	}

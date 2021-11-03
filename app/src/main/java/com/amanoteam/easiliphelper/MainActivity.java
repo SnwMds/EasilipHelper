@@ -1,7 +1,7 @@
 package com.amanoteam.easiliphelper;
 
 import java.io.File;
-import java.uril.Arrays;
+import java.util.Arrays;
 
 import android.content.Intent;
 import android.os.Bundle;
