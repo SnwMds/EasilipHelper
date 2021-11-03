@@ -1,5 +1,7 @@
 package com.amanoteam.easiliphelper;
 
+import java.io.IOException;
+
 import android.content.ContentResolver;
 import android.app.Service;
 import android.content.Intent;
@@ -21,8 +23,9 @@ import java.io.OutputStream;
 
 import org.json.JSONObject;
 import org.json.JSONArray;
+import org.json.JSONException;
 
-public class EasilipService extends Service {
+public class GetPackagesService extends Service {
 	
 	private Looper serviceLooper;
 	private ServiceHandler serviceHandler;
@@ -37,23 +40,19 @@ public class EasilipService extends Service {
 			@Override
 			public void handleMessage(final Message msg) {
 					
-					final Intent intent = (Intent) msg.obj;
-					final String action = intent.getStringExtra("action");
+					final List<ApplicationInfo> packages = packageManager.getInstalledApplications(PackageManager.GET_META_DATA);
 					
-					if (action.equals("fetch_installed_extensions")) {
-						final List<ApplicationInfo> packages = packageManager.getInstalledApplications(PackageManager.GET_META_DATA);
-						
-						String packageLabel;
-						String packageName;
-						int versionCode;
-						String versionName;
-						
-						JSONObject jsonObject;
-						
-						PackageInfo packageInfo;
-						
-						final JSONArray jsonArray = new JSONArray();
-						
+					String packageLabel;
+					String packageName;
+					int versionCode;
+					String versionName;
+					
+					PackageInfo packageInfo;
+					
+					JSONObject jsonObject;
+					final JSONArray jsonArray = new JSONArray();
+					
+					try {
 						for (ApplicationInfo applicationInfo : packages) {
 							packageLabel = packageManager.getApplicationLabel(applicationInfo);
 							packageName = applicationInfo.packageName;
@@ -74,12 +73,13 @@ public class EasilipService extends Service {
 						}
 						
 						final ContentResolver contentResolver =  getContentResolver();
-						final Uri fileUri = Url.parse(Environment.getExternalStorageDirectory() + "/EasilipHelper/installed_packages.json");
+						final Uri fileUri = Url.parse("/sdcard/EasilipHelper/installed_packages.json");
 						
 						final OutputStream outputStream = contentResolver.openOutputStream(fileUri);
 						outputStream.write(jsonArray.toString().getBytes());
 						outputStream.close();
-						
+					} catch (IOException | JSONException e) {
+						Toast.makeText(getApplicationContext(), "Error getting packages list!", Toast.LENGTH_SHORT).show();
 					}
 					
 					stopSelf(msg.arg1);
@@ -101,16 +101,18 @@ public class EasilipService extends Service {
 
 	@Override
 	public int onStartCommand(final Intent intent, final int flags, final int startId) {
-			Message msg = serviceHandler.obtainMessage();
-			msg.arg1 = startId;
-			msg.obj = (Object) intent;
+			final Message message = serviceHandler.obtainMessage();
+			
+			message.arg1 = startId;
+			message.obj = (Object) intent;
+			
 			serviceHandler.sendMessage(msg);
 			
 			return START_NOT_STICKY;
 	}
 
 	@Override
-	public IBinder onBind(Intent intent) {
+	public IBinder onBind(final Intent intent) {
 			return null;
 	}
 

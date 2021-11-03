@@ -1,6 +1,7 @@
 package com.amanoteam.easiliphelper;
 
 import java.io.File;
+import java.util.List;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,15 +21,17 @@ public class MainActivity extends AppCompatActivity {
 	protected void onCreate(final Bundle savedInstanceState) {
 		
 		if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-			requestPermissions(this, new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
+			requestPermissions(new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
 		}
 		
 		final Intent intent = getIntent();
 		final String action = intent.getStringExtra("action");
 		
-		final Intent newIntent = new Intent(this, EasilipService.class);
+		Intent newIntent;
 		
-		newIntent.putExtra("action", action);
+		if (action.equals("fetch_installed_extensions")) {
+			newIntent = new Intent(this, GetPackagesService.class);
+		}
 		
 		startService(newIntent);
 		
@@ -43,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 			return;
 		}
 		
-		final File directory = new File(Environment.getExternalStorageDirectory() + "/EasilipHelper/");
+		final File directory = new File("/sdcard/EasilipHelper/");
 		
 		if (!directory.exists()) {
 			directory.mkdirs();
