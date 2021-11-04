@@ -2,6 +2,7 @@ package com.amanoteam.easiliphelper;
 
 import java.io.IOException;
 import java.util.List;
+import android.util.Log;
 
 import android.widget.Toast;
 import android.content.ContentResolver;
@@ -84,6 +85,7 @@ public class GetPackagesService extends Service {
 				outputStream.close();
 			} catch (IOException | JSONException | NameNotFoundException e) {
 				Toast.makeText(getApplicationContext(), "Error getting packages list!", Toast.LENGTH_SHORT).show();
+				Log.d("myapp", Log.getStackTraceString(e));
 			}
 			
 			// Stop the service using the startId, so that we don't stop
