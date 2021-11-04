@@ -12,7 +12,8 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.Parcelable;
 import android.os.Process;
-import android.os.StrictMode;
+
+import androidx.core.content.FileProvider;
 
 public class InstallPackagesService extends Service {
 	
@@ -33,7 +34,7 @@ public class InstallPackagesService extends Service {
 			
 			final Intent promptInstall = new Intent(Intent.ACTION_VIEW);
 			promptInstall.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-			promptInstall.setDataAndType(packageUri, "application/vnd.android.package-archive");
+			promptInstall.setDataAndType(FileProvider.getUriForFile(getApplicationContext(), "com.amanoteam.easiliphelper.fileprovider",packagePath), "application/vnd.android.package-archive");
 			
 			startActivity(promptInstall);
 			
@@ -43,10 +44,6 @@ public class InstallPackagesService extends Service {
 
 	@Override
 	public void onCreate() {
-		
-		StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
-		StrictMode.setVmPolicy(builder.build());
-		
 		final HandlerThread thread = new HandlerThread("ServiceStartArguments", Process.THREAD_PRIORITY_BACKGROUND);
 		thread.start();
 		
