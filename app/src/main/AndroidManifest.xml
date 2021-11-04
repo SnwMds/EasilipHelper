@@ -9,8 +9,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <application
         android:allowBackup="true"
-        android:label="Easilip Helper"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        android:label="Easilip Helper">
         <activity
             android:name=".MainActivity"
 			android:exported="true"
