@@ -28,7 +28,7 @@ public class InstallPackagesService extends Service {
 			final Intent intent = (Intent) msg.obj;
 			final String packagePath = intent.getStringExtra("packagePath");
 			
-			final Uri packageUri = Uri.parse(packagePath);
+			final Uri packageUri = Uri.parse("file://" + packagePath);
 			
 			final Intent promptInstall = new Intent(Intent.ACTION_VIEW);
 			promptInstall.setDataAndType(packageUri, "application/vnd.android.package-archive");

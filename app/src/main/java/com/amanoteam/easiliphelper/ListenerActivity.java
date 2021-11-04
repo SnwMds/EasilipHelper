@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.amanoteam.easiliphelper.QueryPackagesService;
 import com.amanoteam.easiliphelper.InstallPackagesService;
 
-public class MainActivity extends Activity {
+public class ListenerActivity extends Activity {
 	
 	@Override
 	protected void onCreate(final Bundle savedInstanceState) {
