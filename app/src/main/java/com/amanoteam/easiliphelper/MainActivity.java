@@ -36,7 +36,6 @@ public class MainActivity extends Activity {
 		//final String action = intent.getStringExtra("action");
 		
 		final Intent newIntent = new Intent(this, GetPackagesService.class);
-		Toast.makeText(getApplicationContext(), "Error getting packages list!", Toast.LENGTH_SHORT).show();
 		startService(newIntent);
 		Toast.makeText(getApplicationContext(), "Error getting packages!", Toast.LENGTH_SHORT).show();
 		
