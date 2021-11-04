@@ -38,17 +38,17 @@ public class GetPackagesService extends Service {
 	
 	// Handler that receives messages from the thread
 	private final class ServiceHandler extends Handler {
-		public ServiceHandler(Looper looper) {
+		public ServiceHandler(final Looper looper) {
 			super(looper);
 		}
 		@Override
-		public void handleMessage(Message msg) {
+		public void handleMessage(final Message msg) {
 			
 			final List<ApplicationInfo> packages = packageManager.getInstalledApplications(PackageManager.GET_META_DATA);
 			
 			String packageLabel;
 			String packageName;
-			long versionCode;
+			int versionCode;
 			String versionName;
 			
 			PackageInfo packageInfo;
@@ -67,7 +67,7 @@ public class GetPackagesService extends Service {
 					packageInfo = packageManager.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES);
 					
 					packageLabel = packageManager.getApplicationLabel(applicationInfo).toString();
-					versionCode = packageInfo.getLongVersionCode();
+					versionCode = packageInfo.versionCode;
 					versionName = packageInfo.versionName;
 					
 					jsonObject = new JSONObject();
@@ -99,7 +99,7 @@ public class GetPackagesService extends Service {
 	public void onCreate() {
 		packageManager = getPackageManager();
 		
-		HandlerThread thread = new HandlerThread("ServiceStartArguments", Process.THREAD_PRIORITY_BACKGROUND);
+		final HandlerThread thread = new HandlerThread("ServiceStartArguments", Process.THREAD_PRIORITY_BACKGROUND);
 		thread.start();
 		
 		serviceLooper = thread.getLooper();
@@ -107,10 +107,10 @@ public class GetPackagesService extends Service {
 	}
 
 	@Override
-	public int onStartCommand(Intent intent, int flags, int startId) {
+	public int onStartCommand(final Intent intent, final int flags, final int startId) {
 		Toast.makeText(this, "service starting", Toast.LENGTH_SHORT).show();
 		
-		Message msg = serviceHandler.obtainMessage();
+		final Message msg = serviceHandler.obtainMessage();
 		msg.arg1 = startId;
 		serviceHandler.sendMessage(msg);
 		
@@ -118,7 +118,7 @@ public class GetPackagesService extends Service {
 	}
 
 	@Override
-	public IBinder onBind(Intent intent) {
+	public IBinder onBind(final Intent intent) {
 		return null;
 	}
 
