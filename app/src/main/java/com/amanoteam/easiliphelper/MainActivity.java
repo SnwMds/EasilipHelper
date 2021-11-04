@@ -34,7 +34,7 @@ public class MainActivity extends Activity {
 		if (action.equals("query_packages")) {
 			final Intent newIntent = new Intent(this, QueryPackagesService.class);
 			startService(newIntent);
-		else if (action.equals("install_packages")) {
+		} else if (action.equals("install_packages")) {
 			final String packagePath = intent.getStringExtra("packagePath");
 			
 			if (packagePath == null) {
