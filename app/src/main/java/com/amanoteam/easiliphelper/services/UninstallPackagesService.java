@@ -36,7 +36,7 @@ public class UninstallPackagesService extends Service {
 			final Intent promptUninstall = new Intent(Intent.ACTION_UNINSTALL_PACKAGE);
 			promptUninstall.setData(packageUri);
 			
-			startActivity(promptInstall);
+			startActivity(promptUninstall);
 			
 			stopSelf(msg.arg1);
 		}
