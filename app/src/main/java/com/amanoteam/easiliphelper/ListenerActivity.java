@@ -16,6 +16,9 @@ public class ListenerActivity extends Activity {
 	protected void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
+		StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+		StrictMode.setVmPolicy(builder.build());
+		
 		final File directory = new File("/sdcard/EasilipHelper/");
 		
 		if (!directory.exists()) {
