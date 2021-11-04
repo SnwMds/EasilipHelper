@@ -3,6 +3,7 @@ package com.amanoteam.easiliphelper;
 import android.widget.Toast;
 import android.app.Service;
 import android.content.Intent;
+import java.io.File;
 
 import android.os.Handler;
 import android.os.HandlerThread;
