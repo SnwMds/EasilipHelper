@@ -7,7 +7,7 @@ import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
 
-public class ListenerActivity extends Activity {
+public class SetupPermissionsActivity extends Activity {
 	
 	@Override
 	protected void onCreate(final Bundle savedInstanceState) {
