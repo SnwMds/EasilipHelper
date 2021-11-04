@@ -31,7 +31,7 @@ public class UninstallPackagesService extends Service {
 			final Intent intent = (Intent) msg.obj;
 			final String packageName = intent.getStringExtra("packageName");
 			
-			final Uri packageUri = Uri.parse("package:" + packageName)
+			final Uri packageUri = Uri.parse("package:" + packageName);
 			
 			final Intent promptUninstall = new Intent(Intent.ACTION_UNINSTALL_PACKAGE);
 			promptUninstall.setData(packageUri);
