@@ -5,7 +5,6 @@ import java.io.File;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.widget.Toast;
 
 import com.amanoteam.easiliphelper.QueryPackagesService;
@@ -16,9 +15,6 @@ public class ListenerActivity extends Activity {
 	@Override
 	protected void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
-		StrictMode.setVmPolicy(builder.build());
 		
 		final File directory = new File("/sdcard/EasilipHelper/");
 		

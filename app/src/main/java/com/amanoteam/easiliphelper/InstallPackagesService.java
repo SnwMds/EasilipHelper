@@ -12,6 +12,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.Parcelable;
 import android.os.Process;
+import android.os.StrictMode;
 
 public class InstallPackagesService extends Service {
 	
@@ -42,6 +43,10 @@ public class InstallPackagesService extends Service {
 
 	@Override
 	public void onCreate() {
+		
+		StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+		StrictMode.setVmPolicy(builder.build());
+		
 		final HandlerThread thread = new HandlerThread("ServiceStartArguments", Process.THREAD_PRIORITY_BACKGROUND);
 		thread.start();
 		
