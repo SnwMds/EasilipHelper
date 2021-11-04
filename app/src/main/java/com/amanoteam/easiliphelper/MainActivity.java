@@ -29,6 +29,7 @@ public class MainActivity extends Activity {
 		if (action == null) {
 			Toast.makeText(this, "Missing required argument!", Toast.LENGTH_SHORT).show();
 			finish();
+			return;
 		}
 		
 		if (action.equals("query_packages")) {
