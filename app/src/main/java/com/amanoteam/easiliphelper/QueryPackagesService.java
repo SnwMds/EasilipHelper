@@ -27,7 +27,7 @@ import org.json.JSONObject;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-public class GetPackagesService extends Service {
+public class QueryPackagesService extends Service {
 	
 	private Looper serviceLooper;
 	private ServiceHandler serviceHandler;
