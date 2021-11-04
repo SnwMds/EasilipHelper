@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <service
-			android:name=".EasilipService"
+			android:name=".GetPackagesService"
 			android:label="Easilip service"
 			android:process=":easilipprocess"
 			android:exported="false" />
