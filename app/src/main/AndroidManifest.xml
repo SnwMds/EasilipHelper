@@ -15,24 +15,27 @@
             android:authorities="com.amanoteam.easiliphelper.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths"/>
         </provider>
         <activity
             android:name=".ListenerActivity"
-			android:exported="true"
-			android:launchMode="singleInstance"
-			android:alwaysRetainTaskState="false"
-			android:configChanges="orientation|screenSize"
-			android:fitsSystemWindows="true" >
+            android:exported="true"
+            android:launchMode="singleInstance"
+            android:alwaysRetainTaskState="false"
+            android:configChanges="orientation|screenSize"
+            android:fitsSystemWindows="true" >
         </activity>
         <service
-			android:name=".QueryPackagesService"
-			android:label="Query packages service"
-			android:process=":easilipprocess"
-			android:exported="false" />
+            android:name=".QueryPackagesService"
+            android:label="Query packages service"
+            android:process=":easilipprocess"
+            android:exported="false" />
         <service
-			android:name=".InstallPackagesService"
-			android:label="Install packages service"
-			android:process=":easilipprocess"
-			android:exported="false" />
+            android:name=".InstallPackagesService"
+            android:label="Install packages service"
+            android:process=":easilipprocess"
+            android:exported="false" />
     </application>
 </manifest>
