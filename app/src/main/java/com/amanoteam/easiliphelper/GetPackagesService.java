@@ -78,7 +78,7 @@ public class GetPackagesService extends Service {
 				}
 				
 				final ContentResolver contentResolver =  getContentResolver();
-				final Uri fileUri = Uri.parse("/sdcard/EasilipHelper/installed_packages.json");
+				final Uri fileUri = Uri.parse("file:///sdcard/EasilipHelper/installed_packages.json");
 				
 				final OutputStream outputStream = contentResolver.openOutputStream(fileUri);
 				outputStream.write(jsonArray.toString().getBytes());
