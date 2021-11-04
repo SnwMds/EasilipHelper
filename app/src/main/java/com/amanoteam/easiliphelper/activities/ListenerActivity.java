@@ -48,7 +48,7 @@ public class ListenerActivity extends Activity {
 			
 			startService(newIntent);
 		} else if (action.equals("uninstall_packages")) {
-			final String packageName = intent.getStringExtra("packagePath");
+			final String packageName = intent.getStringExtra("packageName");
 			
 			if (packageName == null) {
 				Toast.makeText(this, "Missing required argument", Toast.LENGTH_SHORT).show();
