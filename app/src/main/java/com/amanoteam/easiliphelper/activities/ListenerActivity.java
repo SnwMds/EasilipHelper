@@ -1,4 +1,4 @@
-package com.amanoteam.easiliphelper;
+package com.amanoteam.easiliphelper.activities;
 
 import java.io.File;
 
@@ -7,8 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.amanoteam.easiliphelper.QueryPackagesService;
-import com.amanoteam.easiliphelper.InstallPackagesService;
+import com.amanoteam.easiliphelper.services.QueryPackagesService;
+import com.amanoteam.easiliphelper.services.InstallPackagesService;
+import com.amanoteam.easiliphelper.services.UninstallPackagesService;
 
 public class ListenerActivity extends Activity {
 	
@@ -18,7 +19,7 @@ public class ListenerActivity extends Activity {
 		
 		final File directory = new File("/sdcard/EasilipHelper/");
 		
-		if (!directory.exists()) {
+		if (directory.exists()) {
 			directory.mkdirs();
 		}
 		
@@ -27,7 +28,7 @@ public class ListenerActivity extends Activity {
 		
 		
 		if (action == null) {
-			Toast.makeText(this, "Missing required argument!", Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, "Missing required argument", Toast.LENGTH_SHORT).show();
 			return;
 		}
 		
@@ -38,12 +39,24 @@ public class ListenerActivity extends Activity {
 			final String packagePath = intent.getStringExtra("packagePath");
 			
 			if (packagePath == null) {
-				Toast.makeText(this, "Missing required argument!", Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, "Missing required argument", Toast.LENGTH_SHORT).show();
 				return;
 			}
 			
 			final Intent newIntent = new Intent(this, InstallPackagesService.class);
 			newIntent.putExtra("packagePath", packagePath);
+			
+			startService(newIntent);
+		} else if (action.equals("uninstall_packages")) {
+			final String packageName = intent.getStringExtra("packagePath");
+			
+			if (packageName == null) {
+				Toast.makeText(this, "Missing required argument", Toast.LENGTH_SHORT).show();
+				return;
+			}
+			
+			final Intent newIntent = new Intent(this, InstallPackagesService.class);
+			newIntent.putExtra("packageName", packageName);
 			
 			startService(newIntent);
 		}

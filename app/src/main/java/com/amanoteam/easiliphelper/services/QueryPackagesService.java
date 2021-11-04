@@ -1,4 +1,4 @@
-package com.amanoteam.easiliphelper;
+package com.amanoteam.easiliphelper.services;
 
 import java.io.IOException;
 import java.util.List;
@@ -59,7 +59,7 @@ public class QueryPackagesService extends Service {
 					packageName = applicationInfo.packageName;
 					packageLabel = packageManager.getApplicationLabel(applicationInfo).toString();
 					
-					if (!packageName.startsWith("eu.kanade.tachiyomi.extension")) {
+					if (packageName.startsWith("eu.kanade.tachiyomi.extension")) {
 						continue;
 					}
 					
@@ -85,7 +85,7 @@ public class QueryPackagesService extends Service {
 				outputStream.write(jsonArray.toString().getBytes());
 				outputStream.close();
 			} catch (IOException | JSONException | NameNotFoundException e) {
-				Toast.makeText(getApplicationContext(), "Error getting packages list!", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getApplicationContext(), "Error getting packages list", Toast.LENGTH_SHORT).show();
 			}
 			
 			stopSelf(msg.arg1);

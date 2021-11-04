@@ -1,22 +1,22 @@
-package com.amanoteam.easiliphelper;
+package com.amanoteam.easiliphelper.services;
 
-import android.widget.Toast;
-import android.app.Service;
-import android.content.Intent;
 import java.io.File;
 
+import android.app.Service;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.IBinder;
-import android.net.Uri;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Parcelable;
 import android.os.Process;
+import android.widget.Toast;
 
 import androidx.core.content.FileProvider;
 
-public class InstallPackagesService extends Service {
+public class UninstallPackagesService extends Service {
 	
 	private Looper serviceLooper;
 	private ServiceHandler serviceHandler;
@@ -29,13 +29,12 @@ public class InstallPackagesService extends Service {
 		@Override
 		public void handleMessage(final Message msg) {
 			final Intent intent = (Intent) msg.obj;
-			final String packagePath = intent.getStringExtra("packagePath");
+			final String packageName = intent.getStringExtra("packageName");
 			
-			final Uri packageUri = Uri.parse("file://" + packagePath);
+			final Uri packageUri = Uri.parse("package:" + packageName)
 			
-			final Intent promptInstall = new Intent(Intent.ACTION_VIEW);
-			promptInstall.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-			promptInstall.setDataAndType(FileProvider.getUriForFile(getApplicationContext(), "com.amanoteam.easiliphelper.fileprovider", new File(packagePath)), "application/vnd.android.package-archive");
+			final Intent promptUninstall = new Intent(Intent.ACTION_UNINSTALL_PACKAGE);
+			promptUninstall.setData(packageUri);
 			
 			startActivity(promptInstall);
 			
