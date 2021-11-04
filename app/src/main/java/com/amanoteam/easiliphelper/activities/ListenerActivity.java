@@ -55,7 +55,7 @@ public class ListenerActivity extends Activity {
 				return;
 			}
 			
-			final Intent newIntent = new Intent(this, InstallPackagesService.class);
+			final Intent newIntent = new Intent(this, UninstallPackagesService.class);
 			newIntent.putExtra("packageName", packageName);
 			
 			startService(newIntent);
