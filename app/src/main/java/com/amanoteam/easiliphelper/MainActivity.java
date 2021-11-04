@@ -28,7 +28,6 @@ public class MainActivity extends Activity {
 		
 		if (action == null) {
 			Toast.makeText(this, "Missing required argument!", Toast.LENGTH_SHORT).show();
-			finish();
 			return;
 		}
 		
@@ -40,7 +39,7 @@ public class MainActivity extends Activity {
 			
 			if (packagePath == null) {
 				Toast.makeText(this, "Missing required argument!", Toast.LENGTH_SHORT).show();
-				finish();
+				return;
 			}
 			
 			final Intent newIntent = new Intent(this, InstallPackagesService.class);
