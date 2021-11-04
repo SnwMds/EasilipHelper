@@ -59,6 +59,7 @@ public class GetPackagesService extends Service {
 			try {
 				for (ApplicationInfo applicationInfo : packages) {
 					packageName = applicationInfo.packageName;
+					packageLabel = packageManager.getApplicationLabel(applicationInfo).toString();
 					
 					if (!packageName.startsWith("eu.kanade.tachiyomi.extension")) {
 						continue;
@@ -66,7 +67,6 @@ public class GetPackagesService extends Service {
 					
 					packageInfo = packageManager.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES);
 					
-					packageLabel = packageManager.getApplicationLabel(applicationInfo).toString();
 					versionCode = packageInfo.versionCode;
 					versionName = packageInfo.versionName;
 					
