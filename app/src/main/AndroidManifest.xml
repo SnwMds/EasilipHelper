@@ -12,7 +12,7 @@
         android:label="Easilip Helper">
         <activity
             android:name=".ListenerActivity"
-			android:exported="false"
+			android:exported="true"
 			android:launchMode="singleInstance"
 			android:alwaysRetainTaskState="false"
 			android:configChanges="orientation|screenSize"
