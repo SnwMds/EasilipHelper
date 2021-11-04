@@ -2,7 +2,6 @@ package com.amanoteam.easiliphelper;
 
 import java.io.IOException;
 import java.util.List;
-import android.util.Log;
 
 import android.widget.Toast;
 import android.content.ContentResolver;
@@ -14,7 +13,6 @@ import android.content.pm.ResolveInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.ApplicationInfo;
 
-import android.os.Build;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.IBinder;
@@ -88,7 +86,6 @@ public class GetPackagesService extends Service {
 				outputStream.close();
 			} catch (IOException | JSONException | NameNotFoundException e) {
 				Toast.makeText(getApplicationContext(), "Error getting packages list!", Toast.LENGTH_SHORT).show();
-				Log.d("myapp", Log.getStackTraceString(e));
 			}
 			
 			stopSelf(msg.arg1);

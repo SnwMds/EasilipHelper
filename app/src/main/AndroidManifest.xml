@@ -23,8 +23,13 @@
             </intent-filter>
         </activity>
         <service
-			android:name=".GetPackagesService"
-			android:label="Easilip service"
+			android:name=".QueryPackagesService"
+			android:label="Query packages service"
+			android:process=":easilipprocess"
+			android:exported="false" />
+        <service
+			android:name=".InstallPackagesService"
+			android:label="Install packages service"
 			android:process=":easilipprocess"
 			android:exported="false" />
     </application>
