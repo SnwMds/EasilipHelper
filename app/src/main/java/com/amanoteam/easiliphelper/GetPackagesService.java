@@ -32,6 +32,8 @@ public class GetPackagesService extends Service {
 	private Looper serviceLooper;
 	private ServiceHandler serviceHandler;
 
+
+	private PackageManager packageManager;
 	// Handler that receives messages from the thread
 	private final class ServiceHandler extends Handler {
 		public ServiceHandler(Looper looper) {
@@ -92,6 +94,7 @@ public class GetPackagesService extends Service {
 
 	@Override
 	public void onCreate() {
+	packageManager = getPackageManager();
 	// Start up the thread running the service. Note that we create a
 	// separate thread because the service normally runs in the process's
 	// main thread, which we don't want to block. We also make it
