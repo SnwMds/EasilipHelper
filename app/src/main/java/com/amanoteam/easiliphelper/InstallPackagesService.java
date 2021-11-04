@@ -34,7 +34,7 @@ public class InstallPackagesService extends Service {
 			
 			final Intent promptInstall = new Intent(Intent.ACTION_VIEW);
 			promptInstall.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-			promptInstall.setDataAndType(FileProvider.getUriForFile(getApplicationContext(), "com.amanoteam.easiliphelper.fileprovider",packagePath), "application/vnd.android.package-archive");
+			promptInstall.setDataAndType(FileProvider.getUriForFile(getApplicationContext(), "com.amanoteam.easiliphelper.fileprovider", new File(packagePath)), "application/vnd.android.package-archive");
 			
 			startActivity(promptInstall);
 			
