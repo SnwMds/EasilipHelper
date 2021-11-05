@@ -16,12 +16,10 @@ public class SetupPermissionsActivity extends Activity {
 		
 		if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
 			Toast.makeText(this, "Storage permission already granted, no more actions needed", Toast.LENGTH_SHORT).show();
-			return;
+		} else {
+			Toast.makeText(this, "Please grant storage permission", Toast.LENGTH_SHORT).show();
+			requestPermissions(new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
 		}
-		
-		Toast.makeText(this, "Please grant storage permission", Toast.LENGTH_SHORT).show();
-		
-		requestPermissions(new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
 		
 		finish();
 	}
