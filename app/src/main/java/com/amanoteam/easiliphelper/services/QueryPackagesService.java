@@ -59,7 +59,7 @@ public class QueryPackagesService extends Service {
 					packageName = applicationInfo.packageName;
 					packageLabel = packageManager.getApplicationLabel(applicationInfo).toString();
 					
-					if (packageName.startsWith("eu.kanade.tachiyomi.extension")) {
+					if (!packageName.startsWith("eu.kanade.tachiyomi.extension")) {
 						continue;
 					}
 					
@@ -70,7 +70,6 @@ public class QueryPackagesService extends Service {
 					
 					jsonObject = new JSONObject();
 					
-					jsonObject.put("packageLabel", packageLabel);
 					jsonObject.put("packageName", packageName);
 					jsonObject.put("versionCode", versionCode);
 					jsonObject.put("versionName", versionName);
@@ -105,8 +104,6 @@ public class QueryPackagesService extends Service {
 
 	@Override
 	public int onStartCommand(final Intent intent, final int flags, final int startId) {
-		Toast.makeText(this, "service starting", Toast.LENGTH_SHORT).show();
-		
 		final Message msg = serviceHandler.obtainMessage();
 		msg.arg1 = startId;
 		serviceHandler.sendMessage(msg);
@@ -121,6 +118,6 @@ public class QueryPackagesService extends Service {
 
 	@Override
 	public void onDestroy() {
-		Toast.makeText(this, "service done", Toast.LENGTH_SHORT).show();
+		return;
 	}
 }

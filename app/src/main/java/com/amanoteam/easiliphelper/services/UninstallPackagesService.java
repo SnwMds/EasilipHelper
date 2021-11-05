@@ -53,8 +53,6 @@ public class UninstallPackagesService extends Service {
 
 	@Override
 	public int onStartCommand(final Intent intent, final int flags, final int startId) {
-		Toast.makeText(this, "service starting", Toast.LENGTH_SHORT).show();
-		
 		final Message msg = serviceHandler.obtainMessage();
 		msg.arg1 = startId;
 		msg.obj = (Object) intent;
@@ -70,6 +68,6 @@ public class UninstallPackagesService extends Service {
 
 	@Override
 	public void onDestroy() {
-		Toast.makeText(this, "service done", Toast.LENGTH_SHORT).show();
+		return;
 	}
 }
